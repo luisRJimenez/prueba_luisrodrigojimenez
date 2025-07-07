@@ -1,0 +1,58 @@
+<div class="container mt-4">
+  <h2>Buscar Personaje de Rick and Morty</h2>
+
+  <form (ngSubmit)="search()" class="mb-3">
+    <input type="text" [(ngModel)]="searchTerm" name="searchTerm" class="form-control" placeholder="Ej: Rick" />
+  </form>
+
+  <div class="character-layout">
+    <div *ngIf="characters.length">
+      <div *ngFor="let character of characters" class="card mb-2">
+        <div class="card-body d-flex align-items-center" (click)="selectCharacter(character)" style="cursor: pointer;">
+          <img [src]="character.image" alt="{{ character.name }}" class="me-3 rounded-circle" width="50" />
+          <div>
+            <h5 class="mb-0">{{ character.name }}</h5>
+            <small>{{ character.species }} - {{ character.status }}</small>
+          </div>
+          <div class="mb-2">
+  
+</div>
+
+        </div>
+      </div>
+    </div>
+
+
+
+    <div *ngIf="selectedCharacter" class="card mt-3">
+      <div class="card-header">
+        <h4>{{ selectedCharacter.name }}</h4>
+      </div>
+      <div class="card-body">
+        <p><strong>Planeta de origen:</strong> {{ selectedCharacter.origin.name }}</p>
+
+        <h6>Episodios donde aparece:</h6>
+        <div *ngIf="loadingDetails">Cargando episodios...</div>
+        <ul *ngIf="!loadingDetails">
+          <li *ngFor="let ep of episodes">
+            {{ ep.episode }} - {{ ep.name }}
+          </li>
+        </ul>
+      </div>
+
+      <div class="mb-2">
+  <button class="btn btn-primary"
+  (click)="importCharacters()" [disabled]="characters.length === 0">
+    Importar personajes a la base de datos
+  </button>
+</div>
+
+    </div>
+  </div>
+
+
+
+  <div *ngIf="error" class="alert alert-danger">
+    No se encontraron personajes 
+  </div>
+</div>

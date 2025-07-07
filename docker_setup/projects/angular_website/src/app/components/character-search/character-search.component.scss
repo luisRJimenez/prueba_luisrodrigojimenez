@@ -1,0 +1,61 @@
+.character-layout {
+  display: grid;
+  grid-template-areas: "list detail";
+  grid-template-columns: 300px 1fr; /* 🟢 Columna izquierda fija de 300px y la derecha flexible */
+  gap: 1rem;
+  padding: 1rem;
+}
+
+/* Asignar cada div a su área */
+.character-list {
+  grid-area: list;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  overflow-y: auto;
+  max-height: 80vh; /* opcional: scroll si hay muchas tarjetas */
+  border-right: 1px solid #ddd;
+  padding-right: 1rem;
+}
+
+.character-detail {
+  grid-area: detail;
+}
+
+/* Estilos de tarjetas de la lista */
+.character-item {
+  background: #fff;
+  border-radius: 6px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+  padding: 0.5rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.character-item:hover {
+  background-color: #f0f0f0;
+}
+
+.item-content {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.character-image {
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+}
+
+.character-name {
+  margin: 0;
+}
+
+/* Detalle */
+.detail-card {
+  background: #fff;
+  border-radius: 6px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+  padding: 1rem;
+}
