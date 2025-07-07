@@ -8,7 +8,7 @@ services:
         volumes:
             - ./projects/laravel_api:/var/www
         ports:
-            - 9000:80
+            - 8000:80
         networks:
             - envrionment_network
 
@@ -19,7 +19,7 @@ services:
         volumes:
             - ./projects/angular_website:/usr/src/angular_website
         ports:
-            - 5000:80
+            - 4200:80
         networks:
             - envrionment_network
         command: ash -c "npm install && ng serve --host 0.0.0.0 --port 80"
